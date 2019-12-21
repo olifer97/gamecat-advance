@@ -1,5 +1,6 @@
 local cat = {}
 local platform = {}
+local platforms = {}
 
 local library = {}
 
@@ -18,20 +19,33 @@ function updateCatframes()
     cat.activeFrame = cat.img[cat.currentFrame]
 end
 
-function love.load()
+function updatePlatforms()
+    for i=1,platforms.count do
+        local platformX = platforms.x + (i-1) * platforms.width + platforms[i].screen * platforms.count * platforms.width
+        if(platformX + platforms.width < 0) then platforms[i].screen = platforms[i].screen + 1 end
+    end
+end
 
-    --basic platform
-     -- This is the height and the width of the platform.
-	platform.width = love.graphics.getWidth()    -- This makes the platform as wide as the whole game window.
-	platform.height = love.graphics.getHeight()  -- This makes the platform as tall as the whole game window.
- 
-        -- This is the coordinates where the platform will be rendered.
-	platform.x = 0                              -- This starts drawing the platform at the left edge of the game window.
-	platform.y = 350            -- This starts drawing the platform at the very middle of the game window
+function love.load()
+    love.window.setMode(800, 400, {resizable=false, vsync=false, minwidth=400, minheight=300})
+
+    --platforms
+    platforms.img = love.graphics.newImage("platform_outside.png")
+    platforms.scale = 0.4
+    platforms.count = 4
+    platforms.width = platforms.img:getWidth() * platforms.scale
+    platforms.y = 320
+    platforms.x = 0
+    platforms.speed = 80
+    for i=1,platforms.count do 
+        platforms[i] = {}
+        platforms[i].screen = 0 
+    end
+
 
     --starting point cat
     cat.x = 60;
-    cat.y = 290;
+    cat.y = 280;
     cat.img = {}
     cat.img[1] = love.graphics.newImage("cat-frame-0.png")
     cat.img[2] = love.graphics.newImage("cat-frame-1.png")
@@ -42,37 +56,54 @@ function love.load()
     cat.currentFrame = 1
     cat.activeFrame = cat.img[cat.currentFrame]
     cat.mirror = 1
-    cat.speed = 100
-    cat.width = cat.img[1]:getWidth() * 3
+    cat.speed = 120
+    cat.scale = 0.7
+    cat.width = cat.img[1]:getWidth() * cat.scale
 
     --library
-    library.x = love.graphics.getWidth()
-    library.y = 133
-    library.speed = 80
-    library.img = love.graphics.newImage("library.png")
+    --library.x = love.graphics.getWidth()
+    --library.y = 133
+    --library.speed = 80
+    --library.img = love.graphics.newImage("library.png")
 end
 
 function love.draw()
-    love.graphics.draw(library.img, library.x, library.y, 0 , 0.8,0.8)
-    love.graphics.setColor(1, 1, 1)        -- This sets the platform color to white.
-     -- The platform will now be drawn as a white rectangle while taking in the variables we declared above.
-    love.graphics.rectangle('fill', platform.x, platform.y, platform.width, platform.height)
-    
+    --love.graphics.draw(library.img, library.x, library.y, 0 , 0.8,0.8)
 
-    love.graphics.draw(cat.activeFrame,cat.x,cat.y,0,cat.mirror * 3,3)
+    --background color
+    red = 135/255
+    green = 206/255
+    blue = 235/255
+    color = { red, green, blue}
+    love.graphics.setBackgroundColor( color)
+
+    for i=1,platforms.count do
+        local platformX = platforms.x + (i-1) * platforms.width + platforms[i].screen * platforms.count * platforms.width
+        love.graphics.draw(platforms.img, platformX, platforms.y, 0 , platforms.scale, platforms.scale)
+    end
+
+    local catX = cat.mirror == -1 and cat.x + cat.width or cat.x
+    
+    love.graphics.draw(cat.activeFrame, catX, cat.y, 0,cat.mirror * cat.scale,cat.scale)
 end
 
 local elapsedTime = 0
 function love.update(dt)
     elapsedTime = elapsedTime + dt
 
-    library.x = library.x - (library.speed * dt)
+    --library.x = library.x - (library.speed * dt)
+    platforms.x = platforms.x - (platforms.speed * dt)
+    cat.x = cat.x - (platforms.speed * dt)
+
+    updatePlatforms()
+
+    if(cat.x < 0) then
+        cat.x = cat.x + (platforms.speed * dt)
+        updateCatframes()
+    end
 
     if love.keyboard.isDown('right') then 
         cat.x = cat.x + (cat.speed * dt)
-        if(cat.x + cat.width > love.graphics.getWidth()) then
-            cat.x = cat.x - (cat.speed * dt)
-        end
         --if(elapsedTime > 0.1) then
         cat.mirror = 1
         updateCatframes()
@@ -80,8 +111,8 @@ function love.update(dt)
         --end
         
 	elseif love.keyboard.isDown('left') then
-        cat.x = cat.x - (cat.speed * dt)
-        if(cat.x - cat.width < 0) then
+        cat.x = cat.x - (cat.speed * dt) + (platforms.speed * dt)
+        if(cat.x < 0) then
             cat.x = cat.x + (cat.speed * dt)
         end
         --if(elapsedTime > 0.1) then
@@ -90,12 +121,16 @@ function love.update(dt)
         elapsedTime = 0
     end
     
-     -- This is in charge of cat jumping.
-    if love.keyboard.isDown('space') then                     -- Whenever the cat presses or holds down the Spacebar:
-        -- The game checks if the cat is on the ground. Remember that when the cat is on the ground, Y-Axis Velocity = 0.
+    --salto
+    if love.keyboard.isDown('space') then
         if cat.y_velocity == 0 then
-            cat.y_velocity = cat.jump_height    -- The cat's Y-Axis Velocity is set to it's Jump Height.
+            cat.y_velocity = cat.jump_height
         end
+    end
+
+    --chequeo si me fui de rango en algunda direccion y corrijo
+    if(cat.x + cat.width > love.graphics.getWidth()) then
+        cat.x = cat.x - (cat.speed * dt)
     end
 
     if cat.y_velocity ~= 0 then
