@@ -12,7 +12,8 @@ local SCREEN_WIDTH = 800
 
 local DELTA = 5
 
-local stateGame = true
+local stateGame = "menu"
+local menuRectangle = {}
 
 function updateCatframes()
     if(cat.currentFrame < 4) then
@@ -73,7 +74,10 @@ end
 
 function love.load()
     love.window.setMode(SCREEN_WIDTH, SCREEN_HEIGHT, {resizable=false, vsync=false, minwidth=400, minheight=300})
-    love.window.setTitle("Jumping cat")
+    love.window.setTitle("My Cats")
+
+    menuRectangle.x = SCREEN_WIDTH/2 - 150 --chandler
+    menuRectangle.y = SCREEN_HEIGHT/2
 
     --platforms
     platforms.img = love.graphics.newImage("platform_outside.png")
@@ -137,11 +141,20 @@ function love.load()
     --starting point cat
     cat.x = 60;
     cat.y = SCREEN_HEIGHT - 120;
-    cat.img = {}
-    cat.img[1] = love.graphics.newImage("cat-grey-frame-0.png")
-    cat.img[2] = love.graphics.newImage("cat-grey-frame-1.png")
-    cat.img[3] = love.graphics.newImage("cat-grey-frame-2.png")
-    cat.img[4] = love.graphics.newImage("cat-grey-frame-1.png")
+    cat.chandler = {}
+    cat.chandler[1] = love.graphics.newImage("cat-frame-0.png")
+    cat.chandler[2] = love.graphics.newImage("cat-frame-1.png")
+    cat.chandler[3] = love.graphics.newImage("cat-frame-2.png")
+    cat.chandler[4] = love.graphics.newImage("cat-frame-1.png")
+
+    cat.lynch = {}
+    cat.lynch[1] = love.graphics.newImage("cat-grey-frame-0.png")
+    cat.lynch[2] = love.graphics.newImage("cat-grey-frame-1.png")
+    cat.lynch[3] = love.graphics.newImage("cat-grey-frame-2.png")
+    cat.lynch[4] = love.graphics.newImage("cat-grey-frame-1.png")
+
+
+    cat.img = cat.chandler
     cat.ground = cat.y
     cat.y_velocity = 0
     cat.jump_height = -250
@@ -150,15 +163,24 @@ function love.load()
     cat.mirror = 1
     cat.speed = 120
     cat.scale = 0.7
-    cat.width = cat.img[1]:getWidth() * cat.scale
-    cat.height = cat.img[1]:getHeight() * cat.scale
+    cat.width = cat.chandler[1]:getWidth() * cat.scale
+    cat.height = cat.chandler[1]:getHeight() * cat.scale
     cat.points = 0
 end
 
 function love.draw()
 
-    --background color
-    if(stateGame) then 
+    if(stateGame == "menu") then 
+        love.graphics.print("My Cats", SCREEN_WIDTH/2 - 50, 10, 0, 2, 2)
+
+        love.graphics.rectangle("line", menuRectangle.x, menuRectangle.y, cat.width, cat.height )
+
+        love.graphics.draw(cat.chandler[1], SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2, 0,cat.scale, cat.scale)
+        love.graphics.print("Chandler", SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
+        love.graphics.draw(cat.lynch[1], SCREEN_WIDTH/2 + 150, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
+        love.graphics.print("Lynch", SCREEN_WIDTH/2 + 160 - cat.width, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
+
+    elseif(stateGame == "game") then 
         red = 135/255
         green = 206/255
         blue = 235/255
@@ -201,73 +223,92 @@ local elapsedTime = 0
 function love.update(dt)
     elapsedTime = elapsedTime + dt
 
-    if(checkCollitions(birds, cat)) then 
-        stateGame = false
-    else
-        if(stateGame) then cat.points = math.ceil(cat.points + (50 * dt)) end
-    end
+    if(stateGame == "game") then
 
-    platforms.x = platforms.x - (platforms.speed * dt)
-    sky.x = sky.x - (sky.speed * dt)
+        if(checkCollitions(birds, cat)) then 
+            stateGame = "gameover"
+        else
+            if(stateGame == "game") then cat.points = math.ceil(cat.points + (50 * dt)) end
+        end
 
-    for i=1,birds.count do
-        birds[i].x = birds[i].x - (birds[i].speed * dt)
-        updateBirdFrame(birds[i], birds[i].frames)
-    end
+        platforms.x = platforms.x - (platforms.speed * dt)
+        sky.x = sky.x - (sky.speed * dt)
 
-    if(cat.y_velocity == 0)then cat.x = cat.x - (platforms.speed * dt) end
+        for i=1,birds.count do
+            birds[i].x = birds[i].x - (birds[i].speed * dt)
+            updateBirdFrame(birds[i], birds[i].frames)
+        end
 
-    updateBackground(platforms)
-    updateBackground(sky)
-    updateBirds(birds)
-    
+        if(cat.y_velocity == 0)then cat.x = cat.x - (platforms.speed * dt) end
 
-    if(cat.x < 0) then
-        cat.x = cat.x + (platforms.speed * dt)
-        updateCatframes()
-    end
-
-    if love.keyboard.isDown('right') then 
-        cat.x = cat.x + (cat.speed * dt)
-        --if(elapsedTime > 0.1) then
-        cat.mirror = 1
-        updateCatframes()
-        elapsedTime = 0
-        --end
+        updateBackground(platforms)
+        updateBackground(sky)
+        updateBirds(birds)
         
-	elseif love.keyboard.isDown('left') then
-        cat.x = cat.x - (cat.speed * dt)
-
-        if(cat.y_velocity == 0)then cat.x = cat.x + (platforms.speed * dt) end
 
         if(cat.x < 0) then
+            cat.x = cat.x + (platforms.speed * dt)
+            updateCatframes()
+        end
+
+        if love.keyboard.isDown('right') then 
             cat.x = cat.x + (cat.speed * dt)
+            --if(elapsedTime > 0.1) then
+            cat.mirror = 1
+            updateCatframes()
+            elapsedTime = 0
+            --end
+            
+        elseif love.keyboard.isDown('left') then
+            cat.x = cat.x - (cat.speed * dt)
+
+            if(cat.y_velocity == 0)then cat.x = cat.x + (platforms.speed * dt) end
+
+            if(cat.x < 0) then
+                cat.x = cat.x + (cat.speed * dt)
+            end
+            --if(elapsedTime > 0.1) then
+            cat.mirror = -1
+            updateCatframes()
+            elapsedTime = 0
         end
-        --if(elapsedTime > 0.1) then
-        cat.mirror = -1
-        updateCatframes()
-        elapsedTime = 0
-    end
+        
+        --salto
+        if love.keyboard.isDown('space') then
+            if cat.y_velocity == 0 then
+                cat.y_velocity = cat.jump_height
+            end
+        end
+
+        --chequeo si me fui de rango en algunda direccion y corrijo
+        if(cat.x + cat.width > love.graphics.getWidth()) then
+            cat.x = cat.x - (cat.speed * dt)
+        end
+
+        if cat.y_velocity ~= 0 then
+            cat.y = cat.y + cat.y_velocity * dt
+            cat.y_velocity = cat.y_velocity - gravity * dt
+        end
     
-    --salto
-    if love.keyboard.isDown('space') then
-        if cat.y_velocity == 0 then
-            cat.y_velocity = cat.jump_height
+        if cat.y > cat.ground then
+            cat.y_velocity = 0
+            cat.y = cat.ground
+        end
+    elseif( stateGame == "menu") then
+        if love.keyboard.isDown('left') then 
+
+            menuRectangle.x = SCREEN_WIDTH/2 - 150 --chandler
+            cat.img = cat.chandler
+            cat.activeFrame = cat.img[cat.currentFrame]
+            
+        elseif love.keyboard.isDown('right') then
+            menuRectangle.x = SCREEN_WIDTH/2 + 150 - cat.width --lynch
+            cat.img = cat.lynch
+            cat.activeFrame = cat.img[cat.currentFrame]
+
+        elseif love.keyboard.isDown('return') then
+            stateGame = "game"
         end
     end
-
-    --chequeo si me fui de rango en algunda direccion y corrijo
-    if(cat.x + cat.width > love.graphics.getWidth()) then
-        cat.x = cat.x - (cat.speed * dt)
-    end
-
-    if cat.y_velocity ~= 0 then
-		cat.y = cat.y + cat.y_velocity * dt
-		cat.y_velocity = cat.y_velocity - gravity * dt
-	end
- 
-	if cat.y > cat.ground then
-		cat.y_velocity = 0
-    	cat.y = cat.ground
-    end
+        
 end
