@@ -138,10 +138,10 @@ function love.load()
     cat.x = 60;
     cat.y = SCREEN_HEIGHT - 120;
     cat.img = {}
-    cat.img[1] = love.graphics.newImage("cat-frame-0.png")
-    cat.img[2] = love.graphics.newImage("cat-frame-1.png")
-    cat.img[3] = love.graphics.newImage("cat-frame-2.png")
-    cat.img[4] = love.graphics.newImage("cat-frame-1.png")
+    cat.img[1] = love.graphics.newImage("cat-grey-frame-0.png")
+    cat.img[2] = love.graphics.newImage("cat-grey-frame-1.png")
+    cat.img[3] = love.graphics.newImage("cat-grey-frame-2.png")
+    cat.img[4] = love.graphics.newImage("cat-grey-frame-1.png")
     cat.ground = cat.y
     cat.y_velocity = 0
     cat.jump_height = -250
