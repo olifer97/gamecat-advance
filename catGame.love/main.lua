@@ -146,13 +146,14 @@ function love.load()
     cat.chandler[2] = love.graphics.newImage("cat-frame-1.png")
     cat.chandler[3] = love.graphics.newImage("cat-frame-2.png")
     cat.chandler[4] = love.graphics.newImage("cat-frame-1.png")
+    cat.chandler.x = SCREEN_WIDTH/2 - 150
 
     cat.lynch = {}
     cat.lynch[1] = love.graphics.newImage("cat-grey-frame-0.png")
     cat.lynch[2] = love.graphics.newImage("cat-grey-frame-1.png")
     cat.lynch[3] = love.graphics.newImage("cat-grey-frame-2.png")
     cat.lynch[4] = love.graphics.newImage("cat-grey-frame-1.png")
-
+    cat.lynch.x = SCREEN_WIDTH/2 + 150
 
     cat.img = cat.chandler
     cat.ground = cat.y
@@ -175,10 +176,10 @@ function love.draw()
 
         love.graphics.rectangle("line", menuRectangle.x, menuRectangle.y, cat.width, cat.height )
 
-        love.graphics.draw(cat.chandler[1], SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2, 0,cat.scale, cat.scale)
-        love.graphics.print("Chandler", SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
-        love.graphics.draw(cat.lynch[1], SCREEN_WIDTH/2 + 150, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
-        love.graphics.print("Lynch", SCREEN_WIDTH/2 + 160 - cat.width, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
+        love.graphics.draw(cat.chandler[1], cat.chandler.x, SCREEN_HEIGHT/2, 0,cat.scale, cat.scale)
+        love.graphics.print("Chandler", cat.chandler.x, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
+        love.graphics.draw(cat.lynch[1], cat.lynch.x, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
+        love.graphics.print("Lynch", cat.lynch.x + 10 - cat.width, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
 
     elseif(stateGame == "game") then 
         red = 135/255
@@ -297,12 +298,12 @@ function love.update(dt)
     elseif( stateGame == "menu") then
         if love.keyboard.isDown('left') then 
 
-            menuRectangle.x = SCREEN_WIDTH/2 - 150 --chandler
+            menuRectangle.x = cat.chandler.x --chandler
             cat.img = cat.chandler
             cat.activeFrame = cat.img[cat.currentFrame]
             
         elseif love.keyboard.isDown('right') then
-            menuRectangle.x = SCREEN_WIDTH/2 + 150 - cat.width --lynch
+            menuRectangle.x = cat.lynch.x - cat.width --lynch
             cat.img = cat.lynch
             cat.activeFrame = cat.img[cat.currentFrame]
 
