@@ -104,13 +104,13 @@ function love.load()
     --birds
     birdsPurple.count = 10
     birdsPurple.img = love.graphics.newImage("bird-purple.png")
-    birdsPurple.width = 24
+    birdsPurple.width = 22
     birdsPurple.height = 10
     birdsPurple.frames = {}
-    birdsPurple.frames[1] = love.graphics.newQuad(0,0,21,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[2] = love.graphics.newQuad(22,0,21,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[3] = love.graphics.newQuad(44,0,21,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[4] = love.graphics.newQuad(66,0,21,16,birdsPurple.img:getDimensions())
+    birdsPurple.frames[1] = love.graphics.newQuad(0,0,22,16,birdsPurple.img:getDimensions())
+    birdsPurple.frames[2] = love.graphics.newQuad(22,0,22,16,birdsPurple.img:getDimensions())
+    birdsPurple.frames[3] = love.graphics.newQuad(45,0,22,16,birdsPurple.img:getDimensions())
+    birdsPurple.frames[4] = love.graphics.newQuad(69,0,22,16,birdsPurple.img:getDimensions())
     for i=1,birdsPurple.count do
         birdsPurple[i] = {}
         local distance = birdsPurple[i-1] and birdsPurple[i-1].x or 0
