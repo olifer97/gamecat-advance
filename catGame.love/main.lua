@@ -181,6 +181,8 @@ function love.draw()
         love.graphics.draw(cat.lynch[1], cat.lynch.x, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
         love.graphics.print("Lynch", cat.lynch.x + 10 - cat.width, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
 
+        love.graphics.print("Press 'Enter' to start", SCREEN_WIDTH/2 - 60, SCREEN_HEIGHT - 20, 0, 1, 1)
+
     elseif(stateGame == "game") then 
         red = 135/255
         green = 206/255
