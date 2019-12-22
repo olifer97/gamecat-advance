@@ -2,7 +2,7 @@ local cat = {}
 local platform = {}
 local platforms = {}
 local sky = {}
-local birdsPurple = {}
+local birds = {}
 
 local library = {}
 
@@ -50,10 +50,10 @@ function updateBirds(birds)
             if(i==1) then 
                 birds[i].x = math.random(birds[birds.count].x + love.graphics.getWidth(), birds[birds.count].x + love.graphics.getWidth() * 1.5)
             else
-                local distance = birdsPurple[i-1] and birdsPurple[i-1].x or 0
-                birdsPurple[i].x = distance + math.random(250, 500)
+                local distance = birds[i-1] and birds[i-1].x or 0
+                birds[i].x = distance + math.random(250, 500)
             end
-            birdsPurple[i].speed = birdsPurple[i].speed + 20
+            birds[i].speed = birds[i].speed + 20
         end
     end
 end
@@ -102,25 +102,36 @@ function love.load()
     sky.width = sky.img:getWidth() * sky.scale
 
     --birds
-    birdsPurple.count = 10
-    birdsPurple.img = love.graphics.newImage("bird-purple.png")
-    birdsPurple.width = 22
-    birdsPurple.height = 10
-    birdsPurple.frames = {}
-    birdsPurple.frames[1] = love.graphics.newQuad(0,0,22,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[2] = love.graphics.newQuad(22,0,22,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[3] = love.graphics.newQuad(45,0,22,16,birdsPurple.img:getDimensions())
-    birdsPurple.frames[4] = love.graphics.newQuad(69,0,22,16,birdsPurple.img:getDimensions())
-    for i=1,birdsPurple.count do
-        birdsPurple[i] = {}
-        local distance = birdsPurple[i-1] and birdsPurple[i-1].x or 0
-        birdsPurple[i].x = distance + math.random(250, 500)
-        --birdsPurple[i].y = SCREEN_HEIGHT - math.random(100,250)
-        birdsPurple[i].y = SCREEN_HEIGHT - 90
-        birdsPurple[i].currentFrame = math.random(1,4)
-        birdsPurple[i].activeFrame = birdsPurple.frames[birdsPurple[i].currentFrame]
-        birdsPurple[i].screen = 1
-        birdsPurple[i].speed = 100 
+    birds.count = 10
+    birds.width = 22
+    birds.height = 10
+    --blue
+    birds.blueImg = love.graphics.newImage("bird-blue.png")
+    birds.blueframes = {}
+    birds.blueframes[1] = love.graphics.newQuad(0,0,22,16,birds.blueImg:getDimensions())
+    birds.blueframes[2] = love.graphics.newQuad(22,0,22,16,birds.blueImg:getDimensions())
+    birds.blueframes[3] = love.graphics.newQuad(45,0,22,16,birds.blueImg:getDimensions())
+    birds.blueframes[4] = love.graphics.newQuad(69,0,22,16,birds.blueImg:getDimensions())
+    --purple
+    birds.purpleImg = love.graphics.newImage("bird-purple.png")
+    birds.purpleframes = {}
+    birds.purpleframes[1] = love.graphics.newQuad(0,0,22,16,birds.purpleImg:getDimensions())
+    birds.purpleframes[2] = love.graphics.newQuad(22,0,22,16,birds.purpleImg:getDimensions())
+    birds.purpleframes[3] = love.graphics.newQuad(45,0,22,16,birds.purpleImg:getDimensions())
+    birds.purpleframes[4] = love.graphics.newQuad(69,0,22,16,birds.purpleImg:getDimensions())
+    for i=1,birds.count do
+        local randomColor = math.random(0,1)
+        birds[i] = {}
+        birds[i].frames = randomColor == 0 and birds.blueframes or birds.purpleframes
+        birds[i].img = randomColor == 0 and birds.blueImg or birds.purpleImg
+        local distance = birds[i-1] and birds[i-1].x or 0
+        birds[i].x = distance + math.random(250, 500)
+        --birds[i].y = SCREEN_HEIGHT - math.random(100,250)
+        birds[i].y = SCREEN_HEIGHT - 90
+        birds[i].currentFrame = math.random(1,4)
+        birds[i].activeFrame = birds[i].frames[birds[i].currentFrame]
+        birds[i].screen = 1
+        birds[i].speed = 100 
     end
 
     --starting point cat
@@ -167,8 +178,8 @@ function love.draw()
             love.graphics.draw(sky.img, skyX, sky.y, 0 , sky.scale, sky.scale)
         end
 
-        for i=1,birdsPurple.count do
-            love.graphics.draw(birdsPurple.img,birdsPurple[i].activeFrame, birdsPurple[i].x, birdsPurple[i].y, 0, 2, 2)
+        for i=1,birds.count do
+            love.graphics.draw(birds[i].img,birds[i].activeFrame, birds[i].x, birds[i].y, 0, 2, 2)
         end
 
         local catX = cat.mirror == -1 and cat.x + cat.width or cat.x
@@ -190,7 +201,7 @@ local elapsedTime = 0
 function love.update(dt)
     elapsedTime = elapsedTime + dt
 
-    if(checkCollitions(birdsPurple, cat)) then 
+    if(checkCollitions(birds, cat)) then 
         stateGame = false
     else
         if(stateGame) then cat.points = math.ceil(cat.points + (50 * dt)) end
@@ -199,16 +210,16 @@ function love.update(dt)
     platforms.x = platforms.x - (platforms.speed * dt)
     sky.x = sky.x - (sky.speed * dt)
 
-    for i=1,birdsPurple.count do
-        birdsPurple[i].x = birdsPurple[i].x - (birdsPurple[i].speed * dt)
-        updateBirdFrame(birdsPurple[i], birdsPurple.frames)
+    for i=1,birds.count do
+        birds[i].x = birds[i].x - (birds[i].speed * dt)
+        updateBirdFrame(birds[i], birds[i].frames)
     end
 
     if(cat.y_velocity == 0)then cat.x = cat.x - (platforms.speed * dt) end
 
     updateBackground(platforms)
     updateBackground(sky)
-    updateBirds(birdsPurple)
+    updateBirds(birds)
     
 
     if(cat.x < 0) then
