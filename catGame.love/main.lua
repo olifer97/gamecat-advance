@@ -80,7 +80,8 @@ function drawGame()
     love.graphics.setBackgroundColor( color)
 
     --points
-    love.graphics.print(cat.points, 10, 0, 0, 1.5, 1.5)
+    love.graphics.setNewFont(18)
+    love.graphics.print(cat.points, 5, 0, 0, 1, 1)
 
     for i=1,platforms.count do
         local platformX = platforms.x + (i-1) * platforms.width + platforms[i].screen * platforms.count * platforms.width
