@@ -102,13 +102,18 @@ function drawGame()
 end
 
 function drawMenu()
-    love.graphics.print("Play with my cats", SCREEN_WIDTH/2 - 50, 10, 0, 2, 2)
+    --love.graphics.print("Play with my cats", SCREEN_WIDTH/2 - 50, 10, 0, 2, 2)
+    font = love.graphics.newFont(24)
+    love.graphics.setFont(font)
+    love.graphics.printf("Play with my cats",0, 10, SCREEN_WIDTH,"center", 0)
+    love.graphics.setNewFont(16)
     love.graphics.rectangle("line", menuRectangle.x, menuRectangle.y, cat.width, cat.height )
     love.graphics.draw(cat.chandler[1], cat.chandler.x, SCREEN_HEIGHT/2, 0,cat.scale, cat.scale)
-    love.graphics.print("Chandler", cat.chandler.x, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
+    love.graphics.printf("Chandler", cat.chandler.x, SCREEN_HEIGHT/2 + 80, cat.width, "center", 0, 1, 1)
     love.graphics.draw(cat.lynch[1], cat.lynch.x, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
-    love.graphics.print("Lynch", cat.lynch.x + 10 - cat.width, SCREEN_HEIGHT/2 + 80, 0, 1.5, 1.5)
-    love.graphics.print("Press 'Enter' to start", SCREEN_WIDTH/2 - 60, SCREEN_HEIGHT - 20, 0, 1, 1)
+    love.graphics.printf("Lynch", cat.lynch.x - cat.width, SCREEN_HEIGHT/2 + 80, cat.width, "center", 0, 1, 1)
+    love.graphics.setNewFont(12)
+    love.graphics.printf("Press 'Enter' to start", 0, SCREEN_HEIGHT - 20, SCREEN_WIDTH, "center", 0)
 end
 
 function drawGameOver()
@@ -118,8 +123,10 @@ function drawGameOver()
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
     love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.print("GAME OVER.", SCREEN_WIDTH/2 - 73, SCREEN_HEIGHT/2, 0, 2, 2)
-    love.graphics.print(cat.points, SCREEN_WIDTH/2 - 25, SCREEN_HEIGHT/2 + 50, 0, 2, 2)
+    love.graphics.setNewFont(24)
+    love.graphics.printf("GAME OVER", 0, SCREEN_HEIGHT/2, SCREEN_WIDTH, "center")
+    love.graphics.setNewFont(16)
+    love.graphics.printf(cat.points, 0, SCREEN_HEIGHT/2 + 50, SCREEN_WIDTH, "center")
 end
 
 function updateGame(dt)
