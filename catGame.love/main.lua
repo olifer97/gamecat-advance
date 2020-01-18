@@ -131,6 +131,9 @@ function drawGameOver()
     love.graphics.printf("GAME OVER", 0, SCREEN_HEIGHT/2, SCREEN_WIDTH, "center")
     love.graphics.setFont(medium_font)
     love.graphics.printf(cat.points, 0, SCREEN_HEIGHT/2 + 50, SCREEN_WIDTH, "center")
+    love.graphics.setFont(small_font)
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.printf("Press 'Space' to restart", 0, SCREEN_HEIGHT - 20, SCREEN_WIDTH, "center", 0)
 end
 
 function updateGame(dt)
@@ -336,5 +339,33 @@ function love.update(dt)
 
     elseif( stateGame == "menu") then
         updateMenu()
+    else
+        if love.keyboard.isDown('space') then
+            stateGame = "menu"
+            cat.x = 60;
+            cat.y = SCREEN_HEIGHT - 120;
+            cat.img = cat.chandler
+            cat.ground = cat.y
+            cat.y_velocity = 0
+            cat.jump_height = -250
+            cat.currentFrame = 1
+            cat.activeFrame = cat.img[cat.currentFrame]
+            cat.points = 0
+
+            for i=1,birds.count do
+                local randomColor = math.random(0,1)
+                birds[i] = {}
+                birds[i].frames = randomColor == 0 and birds.blueframes or birds.purpleframes
+                birds[i].img = randomColor == 0 and birds.blueImg or birds.purpleImg
+                local distance = birds[i-1] and birds[i-1].x or 0
+                birds[i].x = distance + math.random(250, 500)
+                --birds[i].y = SCREEN_HEIGHT - math.random(100,250)
+                birds[i].y = SCREEN_HEIGHT - 90
+                birds[i].currentFrame = math.random(1,4)
+                birds[i].activeFrame = birds[i].frames[birds[i].currentFrame]
+                birds[i].screen = 1
+                birds[i].speed = 100 
+            end
+        end
     end   
 end
