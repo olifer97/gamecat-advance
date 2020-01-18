@@ -15,6 +15,10 @@ local DELTA = 5
 local stateGame = "menu"
 local menuRectangle = {}
 
+local small_font = love.graphics.newFont("Pixel UniCode.ttf", 16)
+local medium_font = love.graphics.newFont("Pixel UniCode.ttf", 24)
+local big_font = love.graphics.newFont("Pixel UniCode.ttf", 32)
+
 function updateCatframes()
     if(cat.currentFrame < 4) then
         if (cat.y_velocity == 0) then
@@ -80,7 +84,7 @@ function drawGame()
     love.graphics.setBackgroundColor( color)
 
     --points
-    love.graphics.setNewFont(18)
+    love.graphics.setFont(medium_font)
     love.graphics.print(cat.points, 5, 0, 0, 1, 1)
 
     for i=1,platforms.count do
@@ -104,16 +108,15 @@ end
 
 function drawMenu()
     --love.graphics.print("Play with my cats", SCREEN_WIDTH/2 - 50, 10, 0, 2, 2)
-    font = love.graphics.newFont(24)
-    love.graphics.setFont(font)
+    love.graphics.setFont(big_font)
     love.graphics.printf("Play with my cats",0, 10, SCREEN_WIDTH,"center", 0)
-    love.graphics.setNewFont(16)
+    love.graphics.setFont(medium_font)
     love.graphics.rectangle("line", menuRectangle.x, menuRectangle.y, cat.width, cat.height )
     love.graphics.draw(cat.chandler[1], cat.chandler.x, SCREEN_HEIGHT/2, 0,cat.scale, cat.scale)
     love.graphics.printf("Chandler", cat.chandler.x, SCREEN_HEIGHT/2 + 80, cat.width, "center", 0, 1, 1)
     love.graphics.draw(cat.lynch[1], cat.lynch.x, SCREEN_HEIGHT/2, 0, -1 * cat.scale,cat.scale)
     love.graphics.printf("Lynch", cat.lynch.x - cat.width, SCREEN_HEIGHT/2 + 80, cat.width, "center", 0, 1, 1)
-    love.graphics.setNewFont(12)
+    love.graphics.setFont(small_font)
     love.graphics.printf("Press 'Enter' to start", 0, SCREEN_HEIGHT - 20, SCREEN_WIDTH, "center", 0)
 end
 
@@ -124,9 +127,9 @@ function drawGameOver()
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
     love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.setNewFont(24)
+    love.graphics.setFont(big_font)
     love.graphics.printf("GAME OVER", 0, SCREEN_HEIGHT/2, SCREEN_WIDTH, "center")
-    love.graphics.setNewFont(16)
+    love.graphics.setFont(medium_font)
     love.graphics.printf(cat.points, 0, SCREEN_HEIGHT/2 + 50, SCREEN_WIDTH, "center")
 end
 
