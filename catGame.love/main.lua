@@ -77,9 +77,9 @@ function checkCollitions(birds, cat)
 end
 
 function drawGame()
-    red = 135/255
-    green = 206/255
-    blue = 235/255
+    red = 135
+    green = 206
+    blue = 235
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
 
@@ -126,7 +126,7 @@ function drawGameOver()
     blue = 0/255
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
-    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.setColor(255, 0, 0, 255)
     love.graphics.setFont(big_font)
     love.graphics.printf("GAME OVER", 0, SCREEN_HEIGHT/2, SCREEN_WIDTH, "center")
     love.graphics.setFont(medium_font)
