@@ -7,13 +7,15 @@
 
     <!-- Load custom style sheet -->
     <link rel="stylesheet" type="text/css" href="theme/love.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <center>
       <div>
-        <h1>Game Title</h1>
-        <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-        <canvas id="loadingCanvas" oncontextmenu="event.preventDefault()" width="800" height="600"></canvas>
+        <h1>Play with my cats</h1>
+        <canvas class="canvas" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+        <img class="arcadeMachine" src="gameboy.png" alt="arcadeMachine"> 
+        <canvas class="canvas" id="loadingCanvas" oncontextmenu="event.preventDefault()" width="480" height="210"></canvas>
       </div>
     </center>
 
@@ -81,8 +83,8 @@
         };
       };
     </script>
+    <script async="" type="text/javascript" src="love.js"></script>
     <script type="text/javascript" src="game.js"></script>
-    <script async type="text/javascript" src="love.js"></script>
     <footer>
       <p>Built with <a href="https://github.com/TannerRogalsky/love.js">love.js</a></p>
     </footer>

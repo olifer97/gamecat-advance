@@ -1,0 +1,13 @@
+.arcadeMachine {
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  margin-left: -498px;
+}
+
+.canvas {
+  position: absolute;
+  left: 50%;
+  margin-left: -240px;
+  top: 230px;
+}
