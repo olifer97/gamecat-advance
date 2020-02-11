@@ -18,9 +18,20 @@
   width: 100%;
   height: 100%;
 
+  .gameboy-background {
+    background: lighten(#000, 10%);
+    position: absolute;
+    width: 900px;
+    height: 450px;
+    border-radius: 50px;
+    left: 194px;
+    z-index: -1;
+    top: 25px;
+  }
+
   .arrows {
     position: absolute;
-    left: 110px;
+    left: 100px;
     top: 35%;
     &:before {
       content: '';
@@ -45,7 +56,7 @@
 
   .buttons {
     position: absolute;
-    right: 110px;
+    right: 100px;
     top: 35%;
 
     &:before {
@@ -82,14 +93,14 @@
   .speakers {
     position: absolute;
     top: 65%;
-    right: 180px;
+    right: 170px;
 
     .speaker {
       position: absolute;
       width: 130px;
       height: 2px;
       border-radius: 5px;
-      background: #000;
+      background: darken(rgb( 118,71,162 ), 20%);
       transform: rotate(-25deg);
 
       &:nth-child(1) {
@@ -123,7 +134,7 @@
       height: 25px;
       border-radius: 50%;
       background: #C0C0C0;
-      left: 150px;
+      left: 140px;
     }
 
     .select {
