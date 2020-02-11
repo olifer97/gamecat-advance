@@ -77,9 +77,9 @@ function checkCollitions(birds, cat)
 end
 
 function drawGame()
-    red = 135/255
-    green = 206/255
-    blue = 235/255
+    red = 135
+    green = 206
+    blue = 235
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
 
@@ -126,11 +126,14 @@ function drawGameOver()
     blue = 0/255
     color = { red, green, blue}
     love.graphics.setBackgroundColor( color)
-    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.setColor(255, 0, 0, 255)
     love.graphics.setFont(big_font)
     love.graphics.printf("GAME OVER", 0, SCREEN_HEIGHT/2, SCREEN_WIDTH, "center")
     love.graphics.setFont(medium_font)
     love.graphics.printf(cat.points, 0, SCREEN_HEIGHT/2 + 50, SCREEN_WIDTH, "center")
+    love.graphics.setFont(small_font)
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.printf("Press 'Space' to restart", 0, SCREEN_HEIGHT - 20, SCREEN_WIDTH, "center", 0)
 end
 
 function updateGame(dt)
@@ -221,6 +224,33 @@ function updateMenu()
     end
 end
 
+function initializeGame()
+    for i=1,birds.count do
+        local randomColor = math.random(0,1)
+        birds[i] = {}
+        birds[i].frames = randomColor == 0 and birds.blueframes or birds.purpleframes
+        birds[i].img = randomColor == 0 and birds.blueImg or birds.purpleImg
+        local distance = birds[i-1] and birds[i-1].x or 0
+        birds[i].x = distance + math.random(250, 500)
+        --birds[i].y = SCREEN_HEIGHT - math.random(100,250)
+        birds[i].y = SCREEN_HEIGHT - 90
+        birds[i].currentFrame = math.random(1,4)
+        birds[i].activeFrame = birds[i].frames[birds[i].currentFrame]
+        birds[i].screen = 1
+        birds[i].speed = 100 
+    end
+
+    cat.x = 60;
+    cat.y = SCREEN_HEIGHT - 120;
+    cat.img = cat.chandler
+    cat.ground = cat.y
+    cat.y_velocity = 0
+    cat.currentFrame = 1
+    cat.activeFrame = cat.img[cat.currentFrame]
+    cat.mirror = 1
+    cat.points = 0
+end
+
 function love.load()
     love.window.setMode(SCREEN_WIDTH, SCREEN_HEIGHT, {resizable=false, vsync=false, minwidth=400, minheight=300})
     love.window.setTitle("My Cats")
@@ -272,24 +302,8 @@ function love.load()
     birds.purpleframes[2] = love.graphics.newQuad(22,0,22,16,birds.purpleImg:getDimensions())
     birds.purpleframes[3] = love.graphics.newQuad(45,0,22,16,birds.purpleImg:getDimensions())
     birds.purpleframes[4] = love.graphics.newQuad(69,0,22,16,birds.purpleImg:getDimensions())
-    for i=1,birds.count do
-        local randomColor = math.random(0,1)
-        birds[i] = {}
-        birds[i].frames = randomColor == 0 and birds.blueframes or birds.purpleframes
-        birds[i].img = randomColor == 0 and birds.blueImg or birds.purpleImg
-        local distance = birds[i-1] and birds[i-1].x or 0
-        birds[i].x = distance + math.random(250, 500)
-        --birds[i].y = SCREEN_HEIGHT - math.random(100,250)
-        birds[i].y = SCREEN_HEIGHT - 90
-        birds[i].currentFrame = math.random(1,4)
-        birds[i].activeFrame = birds[i].frames[birds[i].currentFrame]
-        birds[i].screen = 1
-        birds[i].speed = 100 
-    end
 
     --starting point cat
-    cat.x = 60;
-    cat.y = SCREEN_HEIGHT - 120;
     cat.chandler = {}
     cat.chandler[1] = love.graphics.newImage("cat-frame-0.png")
     cat.chandler[2] = love.graphics.newImage("cat-frame-1.png")
@@ -304,18 +318,13 @@ function love.load()
     cat.lynch[4] = love.graphics.newImage("cat-grey-frame-1.png")
     cat.lynch.x = SCREEN_WIDTH/2 + 150
 
-    cat.img = cat.chandler
-    cat.ground = cat.y
-    cat.y_velocity = 0
     cat.jump_height = -250
-    cat.currentFrame = 1
-    cat.activeFrame = cat.img[cat.currentFrame]
-    cat.mirror = 1
     cat.speed = 120
     cat.scale = 0.7
     cat.width = cat.chandler[1]:getWidth() * cat.scale
     cat.height = cat.chandler[1]:getHeight() * cat.scale
-    cat.points = 0
+
+    initializeGame()
 end
 
 function love.draw()
@@ -336,5 +345,10 @@ function love.update(dt)
 
     elseif( stateGame == "menu") then
         updateMenu()
+    else
+        if love.keyboard.isDown('space') then
+            stateGame = "menu"
+            initializeGame()
+        end
     end   
 end
