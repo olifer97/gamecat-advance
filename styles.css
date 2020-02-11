@@ -18,7 +18,7 @@
   .gameboy .arrows {
     position: absolute;
     left: 110px;
-    top: 45%; }
+    top: 35%; }
     .gameboy .arrows:before {
       content: '';
       position: absolute;
@@ -38,7 +38,7 @@
   .gameboy .buttons {
     position: absolute;
     right: 110px;
-    top: 45%; }
+    top: 35%; }
     .gameboy .buttons:before {
       content: 'B';
       position: absolute;
@@ -65,5 +65,38 @@
       text-align: center;
       line-height: 3.5em;
       margin: 10px auto 30px; }
+  .gameboy .speakers {
+    position: absolute;
+    top: 65%;
+    right: 180px; }
+    .gameboy .speakers .speaker {
+      position: absolute;
+      width: 130px;
+      height: 2px;
+      border-radius: 5px;
+      background: #000;
+      transform: rotate(-25deg); }
+      .gameboy .speakers .speaker:nth-child(1) {
+        top: 15px; }
+      .gameboy .speakers .speaker:nth-child(2) {
+        top: 30px; }
+      .gameboy .speakers .speaker:nth-child(3) {
+        top: 45px; }
+      .gameboy .speakers .speaker:nth-child(4) {
+        top: 60px; }
+      .gameboy .speakers .speaker:nth-child(5) {
+        top: 75px; }
+  .gameboy .mini-buttons {
+    position: absolute;
+    top: 70%; }
+    .gameboy .mini-buttons .select, .gameboy .mini-buttons .start {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #C0C0C0;
+      left: 150px; }
+    .gameboy .mini-buttons .select {
+      top: 50px; }
 
 /*# sourceMappingURL=styles.css.map */
