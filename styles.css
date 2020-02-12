@@ -81,8 +81,9 @@
       left: -70px;
       border-radius: 50%;
       text-align: center;
-      line-height: 3.5em;
-      margin: 10px auto 30px; }
+      line-height: 3em;
+      margin: 10px auto 30px;
+      font-size: 20px; }
     .gameboy .buttons:after {
       content: 'A';
       position: absolute;
@@ -93,8 +94,9 @@
       font-weight: 800;
       border-radius: 50%;
       text-align: center;
-      line-height: 3.5em;
-      margin: 10px auto 30px; }
+      line-height: 3em;
+      margin: 10px auto 30px;
+      font-size: 20px; }
   .gameboy .speakers {
     position: absolute;
     top: 65%;
@@ -119,6 +121,22 @@
   .gameboy .mini-buttons {
     position: absolute;
     top: 70%; }
+    .gameboy .mini-buttons .select-shadow, .gameboy .mini-buttons .start-shadow {
+      position: absolute;
+      width: 95px;
+      height: 25px;
+      background: #693f90;
+      transform: rotate(10deg);
+      left: 73px;
+      top: -5px;
+      border-radius: 25px;
+      color: #7647a2;
+      text-align: start;
+      padding-left: 5px;
+      line-height: 1.5em; }
+    .gameboy .mini-buttons .start-shadow {
+      top: 45px;
+      padding-left: 10px; }
     .gameboy .mini-buttons .select, .gameboy .mini-buttons .start {
       position: absolute;
       width: 25px;

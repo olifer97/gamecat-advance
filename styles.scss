@@ -103,8 +103,9 @@
       left: -70px;
       border-radius: 50%;
       text-align: center;
-      line-height: 3.5em;
+      line-height: 3em;
       margin: 10px auto 30px;
+      font-size: 20px;
     }
 
     &:after {
@@ -117,8 +118,9 @@
       font-weight: 800;
       border-radius: 50%;
       text-align: center;
-      line-height: 3.5em;
+      line-height: 3em;
       margin: 10px auto 30px;
+      font-size: 20px;
     }
   }
 
@@ -160,6 +162,26 @@
   .mini-buttons {
     position: absolute;
     top: 70%;
+
+    .select-shadow, .start-shadow {
+      position: absolute;
+      width: 95px;
+      height: 25px;
+      background: darken(rgb( 118,71,162 ), 5%);
+      transform: rotate(10deg);
+      left: 73px;
+      top: -5px;
+      border-radius: 25px;
+      color: rgb( 118,71,162 );
+      text-align: start;
+      padding-left: 5px;
+      line-height: 1.5em;
+    }
+    .start-shadow {
+      top: 45px;
+      padding-left: 10px;
+    }
+
     .select, .start {
       position: absolute;
       width: 25px;
