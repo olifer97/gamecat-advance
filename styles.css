@@ -24,7 +24,8 @@
     font-style: italic;
     position: absolute;
     top: 403px;
-    left: calc(40% - 10px);
+    left: 50%;
+    margin-left: -140px;
     color: #e6e6e6;
     font-size: 25px; }
   .gameboy .advance-text {
@@ -65,6 +66,13 @@
       width: 30px;
       background: #C0C0C0;
       border-radius: 5px; }
+      .gameboy .arrows:after .arrow-left, .gameboy .arrows:after .arrow-right, .gameboy .arrows:after .arrow-top, .gameboy .arrows:after .arrow-bottom {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #a7a7a7; }
   .gameboy .buttons {
     position: absolute;
     right: 100px;

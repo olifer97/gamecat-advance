@@ -34,7 +34,8 @@
     font-style: italic;
     position: absolute;
     top: 403px;
-    left: calc(40% - 10px);
+    left: 50%;
+    margin-left: -140px;
     color: darken(#fff, 10%);
     font-size: 25px;
   }
@@ -83,6 +84,16 @@
       width: 30px;
       background: #C0C0C0;
       border-radius: 5px;
+
+      .arrow-left,.arrow-right, .arrow-top, .arrow-bottom {
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        
+        border-bottom: 5px solid darken( #C0C0C0, 10%);
+      }
     }
   }
 
