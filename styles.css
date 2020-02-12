@@ -41,7 +41,8 @@
     width: 900px;
     height: 450px;
     border-radius: 50px;
-    left: 194px;
+    left: 50%;
+    margin-left: -450px;
     z-index: -1;
     top: 25px; }
   .gameboy .arrows {
