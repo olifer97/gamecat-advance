@@ -34,7 +34,7 @@
     font-style: italic;
     position: absolute;
     top: 403px;
-    left: 503px;
+    left: calc(40% - 10px);
     color: darken(#fff, 10%);
     font-size: 25px;
   }

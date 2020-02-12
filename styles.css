@@ -24,7 +24,7 @@
     font-style: italic;
     position: absolute;
     top: 403px;
-    left: 503px;
+    left: calc(40% - 10px);
     color: #e6e6e6;
     font-size: 25px; }
   .gameboy .advance-text {
