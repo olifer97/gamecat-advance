@@ -66,13 +66,29 @@
       width: 30px;
       background: #C0C0C0;
       border-radius: 5px; }
-      .gameboy .arrows:after .arrow-left, .gameboy .arrows:after .arrow-right, .gameboy .arrows:after .arrow-top, .gameboy .arrows:after .arrow-bottom {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 5px solid #a7a7a7; }
+    .gameboy .arrows .arrow-left, .gameboy .arrows .arrow-right, .gameboy .arrows .arrow-top, .gameboy .arrows .arrow-bottom {
+      z-index: 2;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 7px solid #a7a7a7; }
+    .gameboy .arrows .arrow-top {
+      top: 10px;
+      left: 9px; }
+    .gameboy .arrows .arrow-bottom {
+      top: 78px;
+      left: 9px;
+      transform: rotate(180deg); }
+    .gameboy .arrows .arrow-left {
+      top: 42px;
+      left: -25px;
+      transform: rotate(-90deg); }
+    .gameboy .arrows .arrow-right {
+      top: 42px;
+      left: 43px;
+      transform: rotate(90deg); }
   .gameboy .buttons {
     position: absolute;
     right: 100px;
@@ -83,7 +99,7 @@
       width: 60px;
       height: 60px;
       background: #C0C0C0;
-      color: #8d8d8d;
+      color: #a7a7a7;
       font-weight: 800;
       top: 50px;
       left: -70px;
@@ -98,7 +114,7 @@
       width: 60px;
       height: 60px;
       background: #C0C0C0;
-      color: #8d8d8d;
+      color: #a7a7a7;
       font-weight: 800;
       border-radius: 50%;
       text-align: center;
