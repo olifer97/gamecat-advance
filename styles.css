@@ -1,10 +1,13 @@
-.arcadeMachine {
-  z-index: -1;
-  position: absolute;
-  left: 50%;
-  margin-left: -498px;
-  top: 52px; }
-
+@font-face {
+  font-family: 'GAMECUBEN';
+  src: url("GAMECUBENDualSet.woff2") format("woff2"), url("GAMECUBENDualSet.woff") format("woff"), url("GAMECUBENDualSet.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Futura';
+  src: url("Futura-BoldOblique.woff2") format("woff2"), url("Futura-BoldOblique.woff") format("woff"), url("Futura-BoldOblique.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic; }
 .canvas {
   position: absolute;
   left: 50%;
@@ -15,6 +18,23 @@
   position: absolute;
   width: 100%;
   height: 100%; }
+  .gameboy .gamecat-text {
+    font-family: 'Futura';
+    font-weight: bold;
+    font-style: italic;
+    position: absolute;
+    top: 403px;
+    left: 503px;
+    color: #e6e6e6;
+    font-size: 25px; }
+  .gameboy .advance-text {
+    font-family: 'GAMECUBEN';
+    font-weight: normal;
+    font-style: normal;
+    position: absolute;
+    color: #e6e6e6;
+    left: 50%;
+    top: 420px; }
   .gameboy .gameboy-background {
     background: #1a1a1a;
     position: absolute;
