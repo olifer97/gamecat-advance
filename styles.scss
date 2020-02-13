@@ -50,6 +50,32 @@
     top: 420px;
   }
 
+  .power {
+    position: absolute;
+    right: 50px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+
+    .power-button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: darken(#fff, 15%);
+      margin-right: 10px;
+    }
+
+    .power-button-on {
+      background: darken(#62ea40, 10%);
+      box-shadow: 0 0 8px #62ea40;
+    }
+
+    .power-text {
+      color: darken(rgb( 118,71,162 ), 5%);
+    }
+  }
+
   .gameboy-background {
     background: lighten(#000, 10%);
     position: absolute;

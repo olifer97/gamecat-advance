@@ -36,6 +36,24 @@
     color: #e6e6e6;
     left: 50%;
     top: 420px; }
+  .gameboy .power {
+    position: absolute;
+    right: 50px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center; }
+    .gameboy .power .power-button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d9d9d9;
+      margin-right: 10px; }
+    .gameboy .power .power-button-on {
+      background: #40df18;
+      box-shadow: 0 0 8px #62ea40; }
+    .gameboy .power .power-text {
+      color: #693f90; }
   .gameboy .gameboy-background {
     background: #1a1a1a;
     position: absolute;
