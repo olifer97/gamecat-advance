@@ -112,6 +112,8 @@
           Module.callMain(Module.arguments);
           document.getElementById('loadingCanvas').style.display = 'none';
           document.getElementById('canvas').style.display = 'block';
+          var element = document.getElementById("power-button");
+          element.classList.add("power-button-on");
         }
       },
       didSyncFS: false,
