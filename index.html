@@ -39,7 +39,7 @@
       <div class="mini-buttons">
         <div class="select-shadow">SELECT</div>
         <div class="start-shadow">START</div>
-        <div class="select"></div>
+        <div class="select" onclick="startClick()"></div>
         <div class="start"></div>
       </div>
       <p class="gamecat-text">GAME CAT</p>
@@ -84,6 +84,12 @@
       loadingContext.fillText("Powered By Emscripten.", canvas.scrollWidth / 2, canvas.scrollHeight / 4);
       loadingContext.fillText("Powered By LÖVE.", canvas.scrollWidth / 2, canvas.scrollHeight / 4 * 3);
     }
+
+    function startClick() {
+      element.dispatchEvent(new KeyboardEvent('keydown',{'key':'Enter'}));
+    }
+
+
 
     window.addEventListener("keydown", function(e) {
       // space and arrow keys
