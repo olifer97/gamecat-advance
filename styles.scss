@@ -270,8 +270,6 @@
     width:60px;
     height:40px; 
 
-
-
     .c{ 
       color:#c2185b;
       transform:rotate(15deg);
@@ -279,29 +277,19 @@
     .o{
       font-size:23px;
       color:#7b1fa2;
-      /*position:absolute;
-      left:23%;
-      top:13%;*/
       transform: translateY(8%);
     }
     .l{
       color:#64dd17;
-      /*position:absolute;
-      left:45%;*/
       transform:rotate(-8deg);
     }
     .o-yellow{
       font-size:24px;
       color:#ffea00 ;
-      /*position:absolute;
-      left:61%;
-      top:10%;*/
       transform: translateY(8%);
     }
     .r{
       color:#0277bd;
-      /*position:absolute;
-      left:84%;*/
     }
   }
 

@@ -205,26 +205,16 @@
     .gameboy .color-text .o {
       font-size: 23px;
       color: #7b1fa2;
-      /*position:absolute;
-      left:23%;
-      top:13%;*/
       transform: translateY(8%); }
     .gameboy .color-text .l {
       color: #64dd17;
-      /*position:absolute;
-      left:45%;*/
       transform: rotate(-8deg); }
     .gameboy .color-text .o-yellow {
       font-size: 24px;
       color: #ffea00;
-      /*position:absolute;
-      left:61%;
-      top:10%;*/
       transform: translateY(8%); }
     .gameboy .color-text .r {
-      color: #0277bd;
-      /*position:absolute;
-      left:84%;*/ }
+      color: #0277bd; }
   @media screen and (max-width: 600px) {
     .gameboy .color-text {
       display: flex;
