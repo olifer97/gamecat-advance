@@ -86,7 +86,8 @@
     }
 
     function startClick() {
-      element.dispatchEvent(new KeyboardEvent('keydown',{'key':'Enter'}));
+      var canvas = document.getElementById('canvas');
+      canvas.dispatchEvent(new KeyboardEvent('keydown',{'key':'Enter'}));
     }
 
 
