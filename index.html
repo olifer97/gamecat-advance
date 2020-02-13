@@ -7,10 +7,13 @@
     <meta name="description" content="Mini game">
     <link rel="author" href="https://github.com/olifer97/" />
     <link rel="canonical" href="https://olifer97.github.io/gamecat-advance/" />
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <meta property="og:url" content="https://olifer97.github.io/gamecat-advance/">
     <meta property="og:description" content="">
     <meta property="og:title" content="Play With My Cats">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" type="text/css" href="love.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -44,6 +47,13 @@
       </div>
       <p class="gamecat-text">GAME CAT</p>
       <p class="advance-text">ADVANCE</p>
+      <span class="color-text">
+        <span class="c">C</span>
+        <span class="o">O</span>
+        <span class="l">L</span>
+        <span class="o-yellow">O</span>
+        <span class="r">R</span>
+      </span>
     </div>
     <center>
       <div>
@@ -93,7 +103,6 @@
 
 
     window.addEventListener("keydown", function(e) {
-      debugger;
       // space and arrow keys
       if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
