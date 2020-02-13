@@ -13,7 +13,7 @@
     <meta property="og:description" content="">
     <meta property="og:title" content="Play With My Cats">
 
-    
+    <script src="jquery-3.4.1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="love.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -105,8 +105,11 @@
     }
 
     function startClick() {
-      var canvas = document.getElementById('canvas');
-      window.dispatchEvent(new KeyboardEvent('keydown',{'key': 'Enter'}));
+      simulateKeyPress("Enter");
+    }
+
+    function simulateKeyPress(character) {
+      jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
     }
 
 
