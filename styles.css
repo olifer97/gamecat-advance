@@ -48,7 +48,8 @@
       height: 10px;
       border-radius: 50%;
       background: #d9d9d9;
-      margin-right: 10px; }
+      margin-right: 10px;
+      transition: background 300ms ease box-shadow 300ms ease; }
     .gameboy .power .power-button-on {
       background: #40df18;
       box-shadow: 0 0 8px #62ea40; }

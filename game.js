@@ -161,7 +161,6 @@ Module.expectedDataFileDownloads++;
         fetched = null;
         var element = document.getElementById("power-button");
         element.classList.add("power-button-on");
-        debugger;
       } else {
         fetchedCallback = processPackageData;
       }
