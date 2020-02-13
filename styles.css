@@ -161,6 +161,8 @@
         top: 60px; }
       .gameboy .speakers .speaker:nth-child(5) {
         top: 75px; }
+  .gameboy .speakers-mobile {
+    display: none; }
   .gameboy .mini-buttons {
     position: absolute;
     top: 70%; }
@@ -224,9 +226,11 @@
     .gameboy .arrows, .gameboy .buttons {
       transform: scale(2); }
     .gameboy .arrows {
-      left: 20%; }
+      left: 20%;
+      top: 40%; }
     .gameboy .buttons {
-      right: 25%; }
+      right: 25%;
+      top: 38%; }
     .gameboy .power {
       left: 55px;
       top: 73px; }
@@ -234,7 +238,36 @@
         display: none; }
       .gameboy .power .power-button-on {
         background: #b0122c;
-        box-shadow: 0 0 8px #de1738; } }
+        box-shadow: 0 0 8px #de1738; }
+    .gameboy .mini-buttons {
+      top: 60%;
+      left: 50%; }
+      .gameboy .mini-buttons .start, .gameboy .mini-buttons .select {
+        width: 55px;
+        left: 0;
+        top: 0; }
+      .gameboy .mini-buttons .select {
+        left: -90px; }
+      .gameboy .mini-buttons .start-shadow, .gameboy .mini-buttons .select-shadow {
+        display: none; }
+    .gameboy .speakers {
+      display: none; }
+    .gameboy .speakers-mobile {
+      display: initial;
+      color: #000;
+      font-size: 10px;
+      height: 60px;
+      letter-spacing: -1px;
+      line-height: 7px;
+      padding: 0;
+      position: absolute;
+      text-align: center;
+      text-shadow: 1px 1px 0px #aed411;
+      transform: rotate(-5deg) scale(3);
+      top: 70%;
+      right: 10%;
+      width: 60px;
+      z-index: 2; } }
 
 body {
   background-color: #7647a2; }

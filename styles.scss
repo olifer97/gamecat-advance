@@ -222,6 +222,10 @@
     }
   }
 
+  .speakers-mobile {
+    display: none;
+  }
+
   .mini-buttons {
     position: absolute;
     top: 70%;
@@ -309,10 +313,12 @@
 
     .arrows {
       left: 20%;
+      top: 40%;
     }
 
     .buttons {
       right: 25%;
+      top: 38%;
     }
 
     .power {
@@ -329,6 +335,46 @@
       }
     }
 
+    .mini-buttons {
+      top: 60%;
+      left: 50%;
+
+      .start, .select {
+        width: 55px;
+        left: 0;
+        top: 0;
+      }
+
+      .select {
+        left: -90px;
+      }
+
+      .start-shadow, .select-shadow {
+        display: none;
+      }
+    }
+
+    .speakers {
+      display: none;
+    }
+
+    .speakers-mobile {
+      display: initial;
+      color: #000;
+      font-size: 10px;
+      height: 60px;
+      letter-spacing: -1px;
+      line-height: 7px;
+      padding: 0;
+      position: absolute;
+      text-align: center;
+      text-shadow: 1px 1px 0px lighten(#9bbc0f,5%);
+      transform: rotate(-5deg) scale(3);
+      top: 70%;
+      right: 10%;
+      width: 60px;
+      z-index: 2;
+    }
   }
 }
 
