@@ -293,7 +293,7 @@
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     .color-text {
       display: flex;
       flex-direction: row;
@@ -305,3 +305,10 @@
   }
 }
 
+body {
+  background-color: rgb( 118,71,162 );
+
+  @media screen and (max-width: 1000px) {
+    background-color: #9bbc0f;
+  }
+}

@@ -215,11 +215,17 @@
       transform: translateY(8%); }
     .gameboy .color-text .r {
       color: #0277bd; }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     .gameboy .color-text {
       display: flex;
       flex-direction: row; }
     .gameboy .advance-text {
       display: none; } }
+
+body {
+  background-color: #7647a2; }
+  @media screen and (max-width: 1000px) {
+    body {
+      background-color: #9bbc0f; } }
 
 /*# sourceMappingURL=styles.css.map */
