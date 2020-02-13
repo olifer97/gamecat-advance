@@ -152,7 +152,7 @@
   .buttons {
     position: absolute;
     right: 100px;
-    top: 35%;
+    top: 32%;
 
     &:before {
       content: 'B';
@@ -263,7 +263,7 @@
     position:absolute;
     display: none;
     left:50%;
-    top: 425px;
+    top: 424px;
     font-family: 'Permanent Marker', cursive;
     font-size:30px;
     font-weight:bold;
@@ -302,6 +302,33 @@
     .advance-text {
       display: none;
     }
+
+    .arrows, .buttons {
+      transform: scale(2);
+    }
+
+    .arrows {
+      left: 20%;
+    }
+
+    .buttons {
+      right: 25%;
+    }
+
+    .power {
+      left: 55px;
+      top: 73px;
+
+      .power-text {
+        display: none;
+      }
+
+      .power-button-on {
+        background: darken(#de1738, 10%);
+        box-shadow: 0 0 8px #de1738;
+      }
+    }
+
   }
 }
 
