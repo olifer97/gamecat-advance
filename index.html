@@ -105,17 +105,18 @@
     }
 
     function startClick() {
-      simulateKeyPress("Enter");
+      simulateKeyPress(39);
     }
 
-    function simulateKeyPress(character) {
-      jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
+    function simulateKeyPress(code) {
+      $('input').trigger("keydown", {which: code});
     }
 
 
 
     window.addEventListener("keydown", function(e) {
       // space and arrow keys
+      debugger;
       if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
       }
