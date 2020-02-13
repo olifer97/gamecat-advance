@@ -64,13 +64,12 @@
       border-radius: 50%;
       background: darken(#fff, 15%);
       margin-right: 10px;
-      transition: 
-        background 300ms ease
-        box-shadow 300ms ease;
-
     }
 
     .power-button-on {
+      transition: 
+        background 300ms ease
+        box-shadow 300ms ease;
       background: darken(#62ea40, 10%);
       box-shadow: 0 0 8px #62ea40;
     }
