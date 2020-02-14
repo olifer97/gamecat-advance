@@ -1,3 +1,7 @@
+$buttons-color: #C0C0C0;
+$advance-color: rgb( 118,71,162 );
+$color-color: #9bbc0f; //xD
+
 @font-face {
   font-family: 'GAMECUBEN';
   src: url('GAMECUBENDualSet.woff2') format('woff2'),
@@ -75,7 +79,8 @@
     }
 
     .power-text {
-      color: darken(rgb( 118,71,162 ), 5%);
+      color: lighten($advance-color, 5%);
+      text-shadow: -1px -1px 0px darken($advance-color, 5%);
     }
   }
 
@@ -94,58 +99,61 @@
   .arrows {
     position: absolute;
     left: 100px;
-    top: 35%;
-    &:before {
-      content: '';
-      position: absolute;
-      width: 90px;
-      height: 30px;
-      background: #C0C0C0;
-      top: 30px;
-      left: -30px;
-      border-radius: 5px;
-    }
+    top: 37%;
 
-    &:after {
-      content: '';
+    .center {
       position: absolute;
-      height: 90px;
       width: 30px;
-      background: #C0C0C0;
-      border-radius: 5px;
+      height: 30px;
+      background: $buttons-color;
     }
 
     .arrow-left,.arrow-right, .arrow-top, .arrow-bottom {
-      z-index: 2;
       position: absolute;
-      width: 0; 
-      height: 0; 
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 7px solid darken( #C0C0C0, 10%);
+      width: 30px;
+      height: 30px;
+      background: $buttons-color;
+
+      &:before {
+        z-index: -1;
+        top: 11px;
+        left: 11px;
+        content: '';
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid darken( $buttons-color, 10%);
+      }
     }
 
     .arrow-top {
-      top: 10px;
-      left: 9px;
+      top: -30px;
+      transform: rotate(360deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0,0,0,.4), inset 1px 1px 0px 0px rgba(255,255,255,0.15);
     }
 
     .arrow-bottom {
-      top: 78px;
-      left: 9px;
+      top: 30px;
       transform: rotate(180deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0,0,0,.4), inset 1px 1px 0px 0px rgba(255,255,255,0.15);
     }
 
     .arrow-left {
-      top: 42px;
-      left: -25px;
+      left: -30px;
       transform: rotate(-90deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0,0,0,.4), inset 1px 1px 0px 0px rgba(255,255,255,0.15);
     }
 
     .arrow-right {
-      top: 42px;
-      left: 43px;
+      left: 30px;
       transform: rotate(90deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0,0,0,.4), inset 1px 1px 0px 0px rgba(255,255,255,0.15);
     }
   }
 
@@ -159,8 +167,9 @@
       position: absolute;
       width: 60px;
       height: 60px;
-      background: #C0C0C0;
-      color: darken(#C0C0C0, 10%);
+      background: $buttons-color;
+      color: darken($buttons-color, 10%);
+      text-shadow: 1px 1px 1px lighten($buttons-color, 12%);
       font-weight: 800;
       top: 50px;
       left: -70px;
@@ -169,6 +178,7 @@
       line-height: 3em;
       margin: 10px auto 30px;
       font-size: 20px;
+      box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
     }
 
     &:after {
@@ -176,14 +186,16 @@
       position: absolute;
       width: 60px;
       height: 60px;
-      background: #C0C0C0;
-      color: darken(#C0C0C0, 10%);
+      background: $buttons-color;
+      color: darken($buttons-color, 10%);
+      text-shadow: 1px 1px 1px lighten($buttons-color, 12%);
       font-weight: 800;
       border-radius: 50%;
       text-align: center;
       line-height: 3em;
       margin: 10px auto 30px;
       font-size: 20px;
+      box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
     }
   }
 
@@ -197,8 +209,9 @@
       width: 130px;
       height: 2px;
       border-radius: 5px;
-      background: darken(rgb( 118,71,162 ), 20%);
+      background: darken($advance-color, 30%);
       transform: rotate(-25deg);
+      box-shadow: 2px 2px 0px lighten($advance-color, 5%);
 
       &:nth-child(1) {
         top: 15px;
@@ -232,17 +245,20 @@
 
     .select-shadow, .start-shadow {
       position: absolute;
-      width: 95px;
+      width: 100px;
       height: 25px;
-      background: darken(rgb( 118,71,162 ), 5%);
+      background: darken($advance-color, 5%);
       transform: rotate(10deg);
-      left: 73px;
+      left: 68px;
       top: -5px;
       border-radius: 25px;
-      color: rgb( 118,71,162 );
+      color: lighten($advance-color, 3%);
       text-align: start;
       padding-left: 5px;
       line-height: 1.5em;
+      text-shadow: -1px -1px 0px darken($advance-color, 8%);
+      box-shadow: -1px 0px 1px lighten($advance-color, 12%);
+      
     }
     .start-shadow {
       top: 45px;
@@ -254,8 +270,11 @@
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      background: #C0C0C0;
+      background: $buttons-color;
       left: 140px;
+      box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
+      //border: 1px solid rgba(0,0,0,0.5);
+      //box-shadow: 0px 0px 0px 3px #432a76, 1px 1px 0px 3px rgba(255,255,255,.1), 1px 1px 0px 0px rgba(0,0,0,0.7), inset 1px 1px 0px 0px #575f66, inset -1px -1px 0px 0px #2d3034;
     }
 
     .select {
@@ -368,7 +387,7 @@
       padding: 0;
       position: absolute;
       text-align: center;
-      text-shadow: 1px 1px 0px lighten(#9bbc0f,5%);
+      text-shadow: 1px 1px 0px lighten($color-color,5%);
       transform: rotate(-5deg) scale(3);
       top: 70%;
       right: 10%;
@@ -379,9 +398,9 @@
 }
 
 body {
-  background-color: rgb( 118,71,162 );
+  background-color: $advance-color;
 
   @media screen and (max-width: 1000px) {
-    background-color: #9bbc0f;
+    background-color: $color-color;
   }
 }

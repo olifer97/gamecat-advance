@@ -54,7 +54,8 @@
       background: #40df18;
       box-shadow: 0 0 8px #62ea40; }
     .gameboy .power .power-text {
-      color: #693f90; }
+      color: #8350b2;
+      text-shadow: -1px -1px 0px #693f90; }
   .gameboy .gameboy-background {
     background: #1a1a1a;
     position: absolute;
@@ -68,46 +69,48 @@
   .gameboy .arrows {
     position: absolute;
     left: 100px;
-    top: 35%; }
-    .gameboy .arrows:before {
-      content: '';
+    top: 37%; }
+    .gameboy .arrows .center {
       position: absolute;
-      width: 90px;
-      height: 30px;
-      background: #C0C0C0;
-      top: 30px;
-      left: -30px;
-      border-radius: 5px; }
-    .gameboy .arrows:after {
-      content: '';
-      position: absolute;
-      height: 90px;
       width: 30px;
-      background: #C0C0C0;
-      border-radius: 5px; }
+      height: 30px;
+      background: #C0C0C0; }
     .gameboy .arrows .arrow-left, .gameboy .arrows .arrow-right, .gameboy .arrows .arrow-top, .gameboy .arrows .arrow-bottom {
-      z-index: 2;
       position: absolute;
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 7px solid #a7a7a7; }
+      width: 30px;
+      height: 30px;
+      background: #C0C0C0; }
+      .gameboy .arrows .arrow-left:before, .gameboy .arrows .arrow-right:before, .gameboy .arrows .arrow-top:before, .gameboy .arrows .arrow-bottom:before {
+        z-index: -1;
+        top: 11px;
+        left: 11px;
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid #a7a7a7; }
     .gameboy .arrows .arrow-top {
-      top: 10px;
-      left: 9px; }
+      top: -30px;
+      transform: rotate(360deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
     .gameboy .arrows .arrow-bottom {
-      top: 78px;
-      left: 9px;
-      transform: rotate(180deg); }
+      top: 30px;
+      transform: rotate(180deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
     .gameboy .arrows .arrow-left {
-      top: 42px;
-      left: -25px;
-      transform: rotate(-90deg); }
+      left: -30px;
+      transform: rotate(-90deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
     .gameboy .arrows .arrow-right {
-      top: 42px;
-      left: 43px;
-      transform: rotate(90deg); }
+      left: 30px;
+      transform: rotate(90deg);
+      border-radius: 5px 5px 0px 0px;
+      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
   .gameboy .buttons {
     position: absolute;
     right: 100px;
@@ -119,6 +122,7 @@
       height: 60px;
       background: #C0C0C0;
       color: #a7a7a7;
+      text-shadow: 1px 1px 1px #dfdfdf;
       font-weight: 800;
       top: 50px;
       left: -70px;
@@ -126,7 +130,8 @@
       text-align: center;
       line-height: 3em;
       margin: 10px auto 30px;
-      font-size: 20px; }
+      font-size: 20px;
+      box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
     .gameboy .buttons:after {
       content: 'A';
       position: absolute;
@@ -134,12 +139,14 @@
       height: 60px;
       background: #C0C0C0;
       color: #a7a7a7;
+      text-shadow: 1px 1px 1px #dfdfdf;
       font-weight: 800;
       border-radius: 50%;
       text-align: center;
       line-height: 3em;
       margin: 10px auto 30px;
-      font-size: 20px; }
+      font-size: 20px;
+      box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
   .gameboy .speakers {
     position: absolute;
     top: 65%;
@@ -149,8 +156,9 @@
       width: 130px;
       height: 2px;
       border-radius: 5px;
-      background: #42285b;
-      transform: rotate(-25deg); }
+      background: #291838;
+      transform: rotate(-25deg);
+      box-shadow: 2px 2px 0px #8350b2; }
       .gameboy .speakers .speaker:nth-child(1) {
         top: 15px; }
       .gameboy .speakers .speaker:nth-child(2) {
@@ -168,17 +176,19 @@
     top: 70%; }
     .gameboy .mini-buttons .select-shadow, .gameboy .mini-buttons .start-shadow {
       position: absolute;
-      width: 95px;
+      width: 100px;
       height: 25px;
       background: #693f90;
       transform: rotate(10deg);
-      left: 73px;
+      left: 68px;
       top: -5px;
       border-radius: 25px;
-      color: #7647a2;
+      color: #7e4cad;
       text-align: start;
       padding-left: 5px;
-      line-height: 1.5em; }
+      line-height: 1.5em;
+      text-shadow: -1px -1px 0px #613b86;
+      box-shadow: -1px 0px 1px #9469bd; }
     .gameboy .mini-buttons .start-shadow {
       top: 45px;
       padding-left: 10px; }
@@ -188,7 +198,8 @@
       height: 25px;
       border-radius: 50%;
       background: #C0C0C0;
-      left: 140px; }
+      left: 140px;
+      box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
     .gameboy .mini-buttons .select {
       top: 50px; }
   .gameboy .color-text {
