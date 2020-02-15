@@ -13,7 +13,7 @@
     <meta property="og:description" content="">
     <meta property="og:title" content="Play With My Cats">
 
-    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="love.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -25,14 +25,14 @@
         <p class="power-text">POWER</p>
       </div>
       <div class="gameboy-background"></div>
-      <div class="arrows">
-        <div class="arrow-left"></div>
-        <div class="arrow-top"></div>
+      <div id="arrows" class="arrows">
+        <div id="left" class="arrow-left"></div>
+        <div id="top" class="arrow-top"></div>
         <div class="center"></div>
-        <div class="arrow-right"></div>
-        <div class="arrow-bottom"></div>
+        <div id="right" class="arrow-right"></div>
+        <div id="bottom" class="arrow-bottom"></div>
       </div>
-      <div class="buttons"></div>
+      <div id="buttons" class="buttons"></div>
       <div class="speakers">
         <div class="speaker"></div>
         <div class="speaker"></div>
@@ -113,15 +113,81 @@
       //canvas.trigger("keydown", {which: code});
       //canvas.trigger("keyup", {which: code});
     }
+    
+    window.addEventListener("keyup", function(e) {
+      // space and arrow keys
+      if(e.keyCode === 37) { //left
+        $("#arrows").removeClass('arrows-left-move')
+        $("#left").removeClass('remove-shadow')
+        $("#right").removeClass('more-shadow-changed')
+        $("#bottom").removeClass('more-shadow')
+        $("#top").removeClass('more-shadow-changed')
+      }
+      else if(e.keyCode === 38) { //top
+        $("#arrows").removeClass('arrows-top-move')
+        $("#top").removeClass('remove-shadow')
+        $("#left").removeClass('more-shadow')
+        $("#bottom").removeClass('more-shadow')
+        $("#right").removeClass('more-shadow-changed')
+      }
+      else if(e.keyCode === 39) { //right
+        $("#arrows").removeClass('arrows-right-move')
+        $("#right").removeClass('remove-shadow')
+        $("#left").removeClass('more-shadow')
+        $("#top").removeClass('more-shadow')
+        $("#bottom").removeClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 40) { //bottom
+        $("#arrows").removeClass('arrows-bottom-move')
+        $("#bottom").removeClass('remove-shadow')
+        $("#right").removeClass('more-shadow')
+        $("#top").removeClass('more-shadow')
+        $("#left").removeClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 32) { //space
+        $("#buttons").removeClass('remove-shadow-buttons')
+      }
 
-
+    }, false);
 
     window.addEventListener("keydown", function(e) {
       // space and arrow keys
-      debugger;
+      //debugger;
+      if (e.keyCode === 37) { //left
+        $("#arrows").addClass('arrows-left-move')
+        $("#left").addClass('remove-shadow')
+        $("#right").addClass('more-shadow-changed')
+        $("#bottom").addClass('more-shadow')
+        $("#top").addClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 38) { //top
+        $("#arrows").addClass('arrows-top-move')
+        $("#top").addClass('remove-shadow')
+        $("#left").addClass('more-shadow')
+        $("#bottom").addClass('more-shadow')
+        $("#right").addClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 39) { //right
+        $("#arrows").addClass('arrows-right-move')
+        $("#right").addClass('remove-shadow')
+        $("#left").addClass('more-shadow')
+        $("#top").addClass('more-shadow')
+        $("#bottom").addClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 40) { //bottom
+        $("#arrows").addClass('arrows-bottom-move')
+        $("#bottom").addClass('remove-shadow')
+        $("#right").addClass('more-shadow')
+        $("#top").addClass('more-shadow')
+        $("#left").addClass('more-shadow-changed')
+      }
+      else if (e.keyCode === 32) { //space
+        $("#buttons").addClass('remove-shadow-buttons')
+      }
       if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
       }
+
     }, false);
 
     var Module = {
