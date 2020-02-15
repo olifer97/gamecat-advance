@@ -237,7 +237,7 @@ function initializeGame()
         birds[i].currentFrame = math.random(1,4)
         birds[i].activeFrame = birds[i].frames[birds[i].currentFrame]
         birds[i].screen = 1
-        birds[i].speed = 100 
+        birds[i].speed = 250 
     end
 
     cat.x = 60;
