@@ -119,8 +119,7 @@
     position: absolute;
     right: 100px;
     top: 32%; }
-    .gameboy .buttons:before {
-      content: 'B';
+    .gameboy .buttons .Bbutton {
       position: absolute;
       width: 60px;
       height: 60px;
@@ -136,7 +135,10 @@
       margin: 10px auto 30px;
       font-size: 20px;
       box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
-    .gameboy .buttons:after {
+      .gameboy .buttons .Bbutton:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05) !important; }
+    .gameboy .buttons .Abutton {
       content: 'A';
       position: absolute;
       width: 60px;
@@ -151,6 +153,9 @@
       margin: 10px auto 30px;
       font-size: 20px;
       box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
+      .gameboy .buttons .Abutton:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05) !important; }
   .gameboy .speakers {
     position: absolute;
     top: 65%;
@@ -204,6 +209,9 @@
       background: #b8b8b8;
       left: 140px;
       box-shadow: -1px -1px 0px 0px #291838, 1px 1px 1px 0px #291838, inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05); }
+      .gameboy .mini-buttons .select:active, .gameboy .mini-buttons .start:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05) !important; }
     .gameboy .mini-buttons .select {
       top: 50px; }
   .gameboy .color-text {
@@ -330,7 +338,7 @@ body {
   transition: box-shadow 300 ease;
   box-shadow: 1.5px -1.5px 0px 0px rgba(0, 0, 0, 0.4), inset -1.5px 1.5px 0px 0px rgba(255, 255, 255, 0.15) !important; }
 
-.remove-shadow-buttons:after {
+.remove-shadow-buttons {
   transition: box-shadow 300ms ease;
   box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05) !important; }
 

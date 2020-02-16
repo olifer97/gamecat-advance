@@ -32,7 +32,10 @@
         <div id="right" class="arrow-right"></div>
         <div id="bottom" class="arrow-bottom"></div>
       </div>
-      <div id="buttons" class="buttons"></div>
+      <div id="buttons" class="buttons">
+        <span id="Abutton" class="Abutton">A</span>
+        <span id="Bbutton" class="Bbutton">B</span>
+      </div>
       <div class="speakers">
         <div class="speaker"></div>
         <div class="speaker"></div>
@@ -145,7 +148,7 @@
         $("#left").removeClass('more-shadow-changed')
       }
       else if (e.keyCode === 32) { //space
-        $("#buttons").removeClass('remove-shadow-buttons')
+        $("#Abutton").removeClass('remove-shadow-buttons')
       }
 
     }, false);
@@ -182,7 +185,8 @@
         $("#left").addClass('more-shadow-changed')
       }
       else if (e.keyCode === 32) { //space
-        $("#buttons").addClass('remove-shadow-buttons')
+        $("#Abutton").addClass('remove-shadow-buttons')
+        $("#Abutton").click()
       }
       if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();

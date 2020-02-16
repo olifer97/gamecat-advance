@@ -166,8 +166,7 @@ $color-color: #9bbc0f; //xD
     right: 100px;
     top: 32%;
 
-    &:before {
-      content: 'B';
+    .Bbutton {
       position: absolute;
       width: 60px;
       height: 60px;
@@ -183,9 +182,14 @@ $color-color: #9bbc0f; //xD
       margin: 10px auto 30px;
       font-size: 20px;
       box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
+      
+      &:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+      }
     }
 
-    &:after {
+    .Abutton {
       content: 'A';
       position: absolute;
       width: 60px;
@@ -200,6 +204,11 @@ $color-color: #9bbc0f; //xD
       margin: 10px auto 30px;
       font-size: 20px;
       box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
+
+      &:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+      }
     }
   }
 
@@ -277,6 +286,11 @@ $color-color: #9bbc0f; //xD
       background: $buttons-color;
       left: 140px;
       box-shadow: -1px -1px 0px 0px darken($advance-color, 30%), 1px 1px 1px 0px darken($advance-color, 30%), inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05);
+      
+      &:active {
+        transition: box-shadow 300ms ease;
+        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+      }
       //border: 1px solid rgba(0,0,0,0.5);
       //box-shadow: 0px 0px 0px 3px #432a76, 1px 1px 0px 3px rgba(255,255,255,.1), 1px 1px 0px 0px rgba(0,0,0,0.7), inset 1px 1px 0px 0px #575f66, inset -1px -1px 0px 0px #2d3034;
     }
@@ -461,9 +475,7 @@ body {
 }
 
 .remove-shadow-buttons {
-  &:after {
-    transition: box-shadow 300ms ease;
-    box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
-  }
+  transition: box-shadow 300ms ease;
+  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
 }
 
