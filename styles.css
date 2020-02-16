@@ -75,26 +75,22 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background: #b8b8b8; }
+      background: #b8b8b8;
+      color: #9f9f9f;
+      text-align: center;
+      text-shadow: 1px 1px 1px #d7d7d7;
+      font-size: 24px; }
     .gameboy .arrows .arrow-left, .gameboy .arrows .arrow-right, .gameboy .arrows .arrow-top, .gameboy .arrows .arrow-bottom {
       position: absolute;
       width: 30px;
       height: 30px;
       background: #b8b8b8;
       border: 1px solid #393939;
+      color: #9f9f9f;
+      text-align: center;
+      text-shadow: 1px 1px 1px #d7d7d7;
       z-index: 0;
       border-bottom: none; }
-      .gameboy .arrows .arrow-left:before, .gameboy .arrows .arrow-right:before, .gameboy .arrows .arrow-top:before, .gameboy .arrows .arrow-bottom:before {
-        z-index: -1;
-        top: 11px;
-        left: 11px;
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 7px solid #9f9f9f; }
     .gameboy .arrows .arrow-top {
       top: -30px;
       transform: rotate(360deg);
@@ -104,12 +100,14 @@
       top: 30px;
       transform: rotate(180deg);
       border-radius: 5px 5px 0px 0px;
-      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
+      box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset 1px 1px 0px 0px rgba(255, 255, 255, 0.15);
+      text-shadow: -1px -1px 1px #d7d7d7; }
     .gameboy .arrows .arrow-left {
       left: -30px;
       transform: rotate(270deg);
       border-radius: 5px 5px 0px 0px;
-      box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset -1px 1px 0px 0px rgba(255, 255, 255, 0.15); }
+      box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.4), inset -1px 1px 0px 0px rgba(255, 255, 255, 0.15);
+      text-shadow: -1px 1px 1px #d7d7d7; }
     .gameboy .arrows .arrow-right {
       left: 30px;
       transform: rotate(90deg);
@@ -139,7 +137,6 @@
         transition: box-shadow 300ms ease;
         box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 2px 0px rgba(255, 255, 255, 0.05), inset 0px 0px 10px 0px rgba(255, 255, 255, 0.05) !important; }
     .gameboy .buttons .Abutton {
-      content: 'A';
       position: absolute;
       width: 60px;
       height: 60px;

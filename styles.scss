@@ -107,6 +107,10 @@ $color-color: #9bbc0f; //xD
       width: 30px;
       height: 30px;
       background: $buttons-color;
+      color: darken($buttons-color, 10%);
+      text-align: center;
+      text-shadow: 1px 1px 1px lighten($buttons-color, 12%);
+      font-size: 24px;
     }
 
     .arrow-left,.arrow-right, .arrow-top, .arrow-bottom {
@@ -115,21 +119,11 @@ $color-color: #9bbc0f; //xD
       height: 30px;
       background: $buttons-color;
       border: 1px solid darken($buttons-color, 50%);
+      color: darken($buttons-color, 10%);
+      text-align: center;
+      text-shadow: 1px 1px 1px lighten($buttons-color, 12%);
       z-index: 0;
       border-bottom: none;
-
-      &:before {
-        z-index: -1;
-        top: 11px;
-        left: 11px;
-        content: '';
-        position: absolute;
-        width: 0; 
-        height: 0; 
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 7px solid darken( $buttons-color, 10%);
-      }
     }
 
     .arrow-top {
@@ -144,6 +138,7 @@ $color-color: #9bbc0f; //xD
       transform: rotate(180deg);
       border-radius: 5px 5px 0px 0px;
       box-shadow: -1px -1px 0px 0px rgba(0,0,0,.4), inset 1px 1px 0px 0px rgba(255,255,255,0.15);
+      text-shadow: -1px -1px 1px lighten($buttons-color, 12%);
     }
 
     .arrow-left {
@@ -151,6 +146,7 @@ $color-color: #9bbc0f; //xD
       transform: rotate(270deg);
       border-radius: 5px 5px 0px 0px;
       box-shadow: 1px -1px 0px 0px rgba(0,0,0,.4), inset -1px 1px 0px 0px rgba(255,255,255,0.15);
+      text-shadow: -1px 1px 1px lighten($buttons-color, 12%);
     }
 
     .arrow-right {
@@ -190,7 +186,6 @@ $color-color: #9bbc0f; //xD
     }
 
     .Abutton {
-      content: 'A';
       position: absolute;
       width: 60px;
       height: 60px;
