@@ -293,18 +293,30 @@ body {
 .arrows-top-move {
   transition: transform 300ms ease;
   transform: rotateX(5deg) !important; }
+  @media screen and (max-width: 1000px) {
+    .arrows-top-move {
+      transform: scale(2) rotateX(5deg) !important; } }
 
 .arrows-bottom-move {
   transition: transform 300ms ease;
   transform: rotateX(-5deg) !important; }
+  @media screen and (max-width: 1000px) {
+    .arrows-bottom-move {
+      transform: scale(2) rotateX(-5deg) !important; } }
 
 .arrows-left-move {
   transition: transform 300ms ease;
   transform: rotateY(-5deg) !important; }
+  @media screen and (max-width: 1000px) {
+    .arrows-left-move {
+      transform: scale(2) rotateY(-5deg) !important; } }
 
 .arrows-right-move {
   transition: transform 300ms ease;
   transform: rotateY(5deg) !important; }
+  @media screen and (max-width: 1000px) {
+    .arrows-right-move {
+      transform: scale(2) rotateY(5deg) !important; } }
 
 .remove-shadow {
   transition: box-shadow 300 ease;
