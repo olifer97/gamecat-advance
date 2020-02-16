@@ -71,7 +71,7 @@
     left: 100px;
     top: 37%; }
     .gameboy .arrows .center {
-      z-index: -1;
+      z-index: 1;
       position: absolute;
       width: 30px;
       height: 30px;
@@ -80,7 +80,10 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background: #b8b8b8; }
+      background: #b8b8b8;
+      border: 1px solid #393939;
+      z-index: 0;
+      border-bottom: none; }
       .gameboy .arrows .arrow-left:before, .gameboy .arrows .arrow-right:before, .gameboy .arrows .arrow-top:before, .gameboy .arrows .arrow-bottom:before {
         z-index: -1;
         top: 11px;
