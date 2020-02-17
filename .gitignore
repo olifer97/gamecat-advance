@@ -1,3 +1,5 @@
 .sass-cache/
 lovejs/
 styles.css.map
+Makefile
+releases/
