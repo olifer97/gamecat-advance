@@ -116,36 +116,116 @@
       //canvas.trigger("keydown", {which: code});
       //canvas.trigger("keyup", {which: code});
     }
+
+    function removeLeft() {
+      $("#arrows").removeClass('arrows-left-move')
+      $("#left").removeClass('remove-shadow')
+      $("#right").removeClass('more-shadow-changed')
+      $("#bottom").removeClass('more-shadow')
+      $("#top").removeClass('more-shadow-changed')
+    }
+
+    function addLeft() {
+      $("#arrows").addClass('arrows-left-move')
+      $("#left").addClass('remove-shadow')
+      $("#right").addClass('more-shadow-changed')
+      $("#bottom").addClass('more-shadow')
+      $("#top").addClass('more-shadow-changed')
+    }
+
+    function removeTop() {
+      $("#arrows").removeClass('arrows-top-move')
+      $("#top").removeClass('remove-shadow')
+      $("#left").removeClass('more-shadow')
+      $("#bottom").removeClass('more-shadow')
+      $("#right").removeClass('more-shadow-changed')
+    }
+
+    function addTop() {
+      $("#arrows").addClass('arrows-top-move')
+      $("#top").addClass('remove-shadow')
+      $("#left").addClass('more-shadow')
+      $("#bottom").addClass('more-shadow')
+      $("#right").addClass('more-shadow-changed')
+    }
+
+    function removeRight() {
+      $("#arrows").removeClass('arrows-right-move')
+      $("#right").removeClass('remove-shadow')
+      $("#left").removeClass('more-shadow')
+      $("#top").removeClass('more-shadow')
+      $("#bottom").removeClass('more-shadow-changed')
+    }
+
+    function addRight() {
+      $("#arrows").addClass('arrows-right-move')
+      $("#right").addClass('remove-shadow')
+      $("#left").addClass('more-shadow')
+      $("#top").addClass('more-shadow')
+      $("#bottom").addClass('more-shadow-changed')
+    }
+
+    function removeBottom() {
+      $("#arrows").removeClass('arrows-bottom-move')
+      $("#bottom").removeClass('remove-shadow')
+      $("#right").removeClass('more-shadow')
+      $("#top").removeClass('more-shadow')
+      $("#left").removeClass('more-shadow-changed')
+    }
+
+    function addBottom() {
+      $("#arrows").addClass('arrows-bottom-move')
+      $("#bottom").addClass('remove-shadow')
+      $("#right").addClass('more-shadow')
+      $("#top").addClass('more-shadow')
+      $("#left").addClass('more-shadow-changed')
+    }
+
+    $("#top").bind("mousedown", function() { 
+      addTop()
+    }); 
+
+    $("#top").bind("mouseup", function() { 
+      removeTop()
+    }); 
+
+    $("#left").bind("mousedown", function() { 
+      addLeft()
+    }); 
+
+    $("#left").bind("mouseup", function() { 
+      removeLeft()
+    }); 
+
+    $("#bottom").bind("mousedown", function() { 
+      addBottom()
+    }); 
+
+    $("#bottom").bind("mouseup", function() { 
+      removeBottom()
+    }); 
+
+    $("#right").bind("mousedown", function() { 
+      addRight()
+    }); 
+
+    $("#right").bind("mouseup", function() { 
+      removeRight()
+    }); 
     
     window.addEventListener("keyup", function(e) { //worst code ever made
       // space and arrow keys
       if(e.keyCode === 37) { //left
-        $("#arrows").removeClass('arrows-left-move')
-        $("#left").removeClass('remove-shadow')
-        $("#right").removeClass('more-shadow-changed')
-        $("#bottom").removeClass('more-shadow')
-        $("#top").removeClass('more-shadow-changed')
+        removeLeft()
       }
       else if(e.keyCode === 38) { //top
-        $("#arrows").removeClass('arrows-top-move')
-        $("#top").removeClass('remove-shadow')
-        $("#left").removeClass('more-shadow')
-        $("#bottom").removeClass('more-shadow')
-        $("#right").removeClass('more-shadow-changed')
+        removeTop()
       }
       else if(e.keyCode === 39) { //right
-        $("#arrows").removeClass('arrows-right-move')
-        $("#right").removeClass('remove-shadow')
-        $("#left").removeClass('more-shadow')
-        $("#top").removeClass('more-shadow')
-        $("#bottom").removeClass('more-shadow-changed')
+        removeRight()
       }
       else if (e.keyCode === 40) { //bottom
-        $("#arrows").removeClass('arrows-bottom-move')
-        $("#bottom").removeClass('remove-shadow')
-        $("#right").removeClass('more-shadow')
-        $("#top").removeClass('more-shadow')
-        $("#left").removeClass('more-shadow-changed')
+        removeBottom()
       }
       else if (e.keyCode === 32) { //space
         $("#Abutton").removeClass('remove-shadow-buttons')
@@ -155,38 +235,20 @@
 
     window.addEventListener("keydown", function(e) {
       // space and arrow keys
-      //debugger;
       if (e.keyCode === 37) { //left
-        $("#arrows").addClass('arrows-left-move')
-        $("#left").addClass('remove-shadow')
-        $("#right").addClass('more-shadow-changed')
-        $("#bottom").addClass('more-shadow')
-        $("#top").addClass('more-shadow-changed')
+        addLeft()
       }
       else if (e.keyCode === 38) { //top
-        $("#arrows").addClass('arrows-top-move')
-        $("#top").addClass('remove-shadow')
-        $("#left").addClass('more-shadow')
-        $("#bottom").addClass('more-shadow')
-        $("#right").addClass('more-shadow-changed')
+        addTop()
       }
       else if (e.keyCode === 39) { //right
-        $("#arrows").addClass('arrows-right-move')
-        $("#right").addClass('remove-shadow')
-        $("#left").addClass('more-shadow')
-        $("#top").addClass('more-shadow')
-        $("#bottom").addClass('more-shadow-changed')
+        addRight()
       }
       else if (e.keyCode === 40) { //bottom
-        $("#arrows").addClass('arrows-bottom-move')
-        $("#bottom").addClass('remove-shadow')
-        $("#right").addClass('more-shadow')
-        $("#top").addClass('more-shadow')
-        $("#left").addClass('more-shadow-changed')
+        addBottom()
       }
       else if (e.keyCode === 32) { //space
         $("#Abutton").addClass('remove-shadow-buttons')
-        $("#Abutton").click()
       }
       if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();

@@ -181,7 +181,7 @@ $color-color: #9bbc0f; //xD
       
       &:active {
         transition: box-shadow 300ms ease;
-        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+        box-shadow: inset 2px 2px 2px 2px rgba(58, 15, 15, 0.15) !important;
       }
     }
 
@@ -202,7 +202,7 @@ $color-color: #9bbc0f; //xD
 
       &:active {
         transition: box-shadow 300ms ease;
-        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+        box-shadow: inset 2px 2px 2px 2px rgba(58, 15, 15, 0.15) !important;
       }
     }
   }
@@ -284,10 +284,8 @@ $color-color: #9bbc0f; //xD
       
       &:active {
         transition: box-shadow 300ms ease;
-        box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+        box-shadow: inset 1px 1px 1px 1px rgba(58, 15, 15, 0.15) !important;
       }
-      //border: 1px solid rgba(0,0,0,0.5);
-      //box-shadow: 0px 0px 0px 3px #432a76, 1px 1px 0px 3px rgba(255,255,255,.1), 1px 1px 0px 0px rgba(0,0,0,0.7), inset 1px 1px 0px 0px #575f66, inset -1px -1px 0px 0px #2d3034;
     }
 
     .select {
@@ -456,21 +454,21 @@ body {
 
 .remove-shadow {
   transition: box-shadow 300 ease;
-  box-shadow: none !important;
+  box-shadow: inset 0px 30px 0px 0px rgba(255,255,255,0.15) !important;
 }
 
 .more-shadow {
   transition: box-shadow 300 ease;
-  box-shadow: -1.5px -1.5px 0px 0px rgba(0,0,0,.4), inset 1.5px 1.5px 0px 0px rgba(255,255,255,0.15) !important;
+  box-shadow: -2px -2px 0px 0px rgba(0,0,0,.4), inset 1.5px 1.5px 0px 0px rgba(255,255,255,0.15) !important;
 }
 
 .more-shadow-changed {
   transition: box-shadow 300 ease;
-  box-shadow: 1.5px -1.5px 0px 0px rgba(0,0,0,.4), inset -1.5px 1.5px 0px 0px rgba(255,255,255,0.15) !important;
+  box-shadow: 2px -2px 0px 0px rgba(0,0,0,.4), inset -1.5px 1.5px 0px 0px rgba(255,255,255,0.15) !important;
 }
 
 .remove-shadow-buttons {
   transition: box-shadow 300ms ease;
-  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1), inset 0px 0px 2px 0px rgba(255,255,255,0.05), inset 0px 0px 10px 0px rgba(255,255,255,0.05) !important;
+  box-shadow: inset 2px 2px 2px 2px rgba(58, 15, 15, 0.15) !important;
 }
 
